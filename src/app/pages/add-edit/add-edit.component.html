@@ -1,0 +1,84 @@
+<mat-toolbar>
+    <div>Add-user</div>
+    <button mat-raised-button style="margin-left: 89%;" routerLink="/">Back</button>
+</mat-toolbar>
+<h1 *ngIf="type" style="margin-left: 45%;">Add User</h1>
+<h1 *ngIf="!type"style="margin-left: 45%;">Edit User</h1>
+<h1 *ngIf="!type"style="margin-left: 45%;">View User</h1>
+<form [formGroup]="addEmployees">
+    <div class="form_feilds">
+        <div class="form_grup">
+            <mat-form-field appearance="fill">
+                <input restrictSpace noSpace matInput type="name" placeholder="name" class="form_control"
+                    formControlName="name">
+                    <mat-error *ngIf="
+                        submitted &&
+                        addEmployees.controls['name'].hasError('required')">
+                Name is required
+            </mat-error>
+            </mat-form-field>
+            
+        </div>
+        <div class="form_grup">
+            <mat-form-field appearance="fill">
+                <input restrictSpace noSpace matInput formControlName="dob" [matDatepicker]="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="
+                submitted &&
+                addEmployees.controls['dob'].hasError('required')">
+    DOB is required
+</mat-error>
+            </mat-form-field>
+           
+        </div>
+        <div class="form_group">
+            <mat-form-field appearance="fill">
+              
+       <input noSpaceFirstInput class="form_control"  placeholder="Address" matInput ngx-google-places-autocomplete
+                  formControlName="address" type="text" (onAddressChange)="handleAddressChange($event)" />
+                  <mat-error *ngIf="
+            submitted &&
+            addEmployees.controls['address'].hasError('required')">
+            Address is required
+        </mat-error>
+            </mat-form-field>
+            
+        </div>
+       <div class= "form_group">
+        <mat-form-field appearance="fill">
+            <input restrictspace noSpace matInput type="email" placeholder="email" class="from_control"
+            formControlName="email">
+            <mat-error *ngIf="
+            submitted &&
+            addEmployees.controls['email'].hasError('required')">
+            Email is required
+        </mat-error>
+        </mat-form-field>
+       
+       </div>
+    <div class="tyo">
+       
+        <ngx-intl-tel-input [inputId]="'adsasd'" matInput [cssClass]="'custom'"
+        [preferredCountries]="preferredCountries"
+        [enableAutoCountrySelect]="true"
+        [selectedCountryISO]="CountryISO.India"
+       [searchCountryFlag]="true"
+       [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+        [selectFirstCountry]="false"
+       name="phone" formControlName="phone" placeholder="Enter Phone Number">
+   </ngx-intl-tel-input>
+       
+    <mat-error
+        *ngIf="submitted && addEmployees.controls['phone'].hasError('required')">
+        Phone is required
+    </mat-error>
+</div>
+    </div>
+    <div *ngIf ="type !== 'view'">
+    <button mat-raised-button type="submit" (click)="onSubmit()">Submit</button>
+</div>
+</form>
+   
+

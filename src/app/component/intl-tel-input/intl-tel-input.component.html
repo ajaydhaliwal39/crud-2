@@ -1,0 +1,9 @@
+<div [formGroup]="phoneFormGroup">
+  <ngx-intl-tel-input formControlName="phone" [cssClass]="'custom form_control'"
+    [preferredCountries]="preferredCountries" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
+    [searchCountryFlag]="true" [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+    [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.Morocco" [maxLength]="15" [phoneValidation]="true"
+    [separateDialCode]="separateDialCode" [numberFormat]="PhoneNumberFormat.National"
+    (ngModelChange)="changeEvent($event)" (countryChange)="event2($event)">
+  </ngx-intl-tel-input>
+</div>

@@ -1,0 +1,11 @@
+<div class="filter_lft">
+  <mat-form-field class="srch" floatLabel="never">
+    <button mat-button matPrefix mat-icon-button>
+      <mat-icon *ngIf="!showCrossIcon">search</mat-icon>
+      <mat-icon *ngIf="showCrossIcon" (click)="clearInputField()"
+        >close</mat-icon
+      >
+    </button>
+    <input #search matInput placeholder="Search" />
+  </mat-form-field>
+</div>
